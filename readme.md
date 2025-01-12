@@ -1,6 +1,6 @@
 # MiniCRM
 
-Welcome to this MiniCRM. It can be used as REST backend for a simple CRM app.
+Welcome to MiniCRM. This project serves as a REST backend for a simple CRM application, demonstrating basic CRUD operations in a .NET 9.0 Web API project. It is also utilized in training and assignments for courses instructed by [Michell Cronberg](https://mcronberg.github.io/bogenomcsharp/diverse/ommichell.html).
 
 ## Available endpoints:
 
@@ -33,12 +33,9 @@ public class Customer
 
 ## Getting Started:
 
-1. Clone the repository to your local machine.
-2. Open the project in your preferred IDE (e.g., Visual Studio, Visual Studio Code).
-3. Ensure you have .NET 6.0 SDK installed on your machine.
-4. Restore the project dependencies by running `dotnet restore` in the project directory.
-5. Build the project by running `dotnet build`.
-6. Run the project by running `dotnet run`.
+1. Clone the repository to your local machine. You can also download the repository as a ZIP file and extract it to a local directory.
+2. Ensure you have .NET 9.0 SDK installed on your machine.
+3. Run the project by running `dotnet run`.
 
 ## Database Initialization:
 
@@ -129,4 +126,3 @@ To use the `test.http` file in Visual Studio Code:
    GET http://localhost:5000/version
    ```
 
-We hope you find this MiniCRM useful for your projects. Happy coding!
