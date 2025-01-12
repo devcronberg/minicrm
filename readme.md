@@ -1,24 +1,23 @@
--------
-MiniCRM
--------
+# MiniCRM
 
 Welcome to this MiniCRM. It can be used as REST backend for a simple CRM app.
 
-Available endpoints:
+## Available endpoints:
 
-GET /customers - Get all customers
-GET /customers/{id} - Get a customer by ID
-GET /customers/findbyname/{name} - Find customers by name
-POST /customers - Create a new customer
-POST /api/customers - Create a new customer
-PUT /api/customers/{id} - Update an existing customer
-PATCH /api/customers/{id} - Partially update an existing customer
-DELETE /api/customers/{id} - Delete a customer
-GET /test?text={text} - Returns the provided text (mirror)
-GET /version - Returns the version (major.minor.build)
+- **GET /customers** - Get all customers
+- **GET /customers/{id}** - Get a customer by ID
+- **GET /customers/findbyname/{name}** - Find customers by name
+- **POST /customers** - Create a new customer
+- **POST /api/customers** - Create a new customer
+- **PUT /api/customers/{id}** - Update an existing customer
+- **PATCH /api/customers/{id}** - Partially update an existing customer
+- **DELETE /api/customers/{id}** - Delete a customer
+- **GET /test?text={text}** - Returns the provided text (mirror)
+- **GET /version** - Returns the version (major.minor.build)
 
-Customer class:
+## Customer class:
 
+```csharp
 public class Customer
 {
     public int Id { get; set; }
@@ -30,8 +29,9 @@ public class Customer
     public bool IsActive { get; set; }
     public List<string> Tags { get; set; } = new();
 }
+```
 
-Getting Started:
+## Getting Started:
 
 1. Clone the repository to your local machine.
 2. Open the project in your preferred IDE (e.g., Visual Studio, Visual Studio Code).
@@ -40,11 +40,11 @@ Getting Started:
 5. Build the project by running `dotnet build`.
 6. Run the project by running `dotnet run`.
 
-Database Initialization:
+## Database Initialization:
 
 When you run the project for the first time, it will check if a `customers.db` file exists. If it does, you will be prompted to delete it and start fresh. If you choose to delete it, a new database will be created and pre-seeded with data from the `customers.json` file.
 
-Testing the API:
+## Testing the API:
 
 There is a `test.http` file included in this project that you can use to test the API endpoints.
 
@@ -53,25 +53,25 @@ To use the `test.http` file in Visual Studio Code:
 2. Open the `test.http` file in Visual Studio Code.
 3. Click on the "Send Request" links that appear above each request to execute them.
 
-Example Requests:
+## Example Requests:
 
-1. Get all customers:
-   ```
+1. **Get all customers:**
+   ```http
    GET http://localhost:5000/customers
    ```
 
-2. Get a customer by ID:
-   ```
+2. **Get a customer by ID:**
+   ```http
    GET http://localhost:5000/customers/1
    ```
 
-3. Find customers by name:
-   ```
+3. **Find customers by name:**
+   ```http
    GET http://localhost:5000/customers/findbyname/John
    ```
 
-4. Create a new customer:
-   ```
+4. **Create a new customer:**
+   ```http
    POST http://localhost:5000/customers
    Content-Type: application/json
 
@@ -86,8 +86,8 @@ Example Requests:
    }
    ```
 
-5. Update an existing customer:
-   ```
+5. **Update an existing customer:**
+   ```http
    PUT http://localhost:5000/api/customers/1
    Content-Type: application/json
 
@@ -103,8 +103,8 @@ Example Requests:
    }
    ```
 
-6. Partially update an existing customer:
-   ```
+6. **Partially update an existing customer:**
+   ```http
    PATCH http://localhost:5000/api/customers/1
    Content-Type: application/json
 
@@ -114,18 +114,18 @@ Example Requests:
    }
    ```
 
-7. Delete a customer:
-   ```
+7. **Delete a customer:**
+   ```http
    DELETE http://localhost:5000/api/customers/1
    ```
 
-8. Test endpoint:
-   ```
+8. **Test endpoint:**
+   ```http
    GET http://localhost:5000/test?text=Hello
    ```
 
-9. Version endpoint:
-   ```
+9. **Version endpoint:**
+   ```http
    GET http://localhost:5000/version
    ```
 
