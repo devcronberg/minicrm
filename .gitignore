@@ -8,6 +8,7 @@
 *.userosscache
 *.sln.docstates
 
+customers.db
 # User-specific files (Mono Auto Generated)
 mono_crash.*
 
