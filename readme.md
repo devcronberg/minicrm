@@ -76,8 +76,6 @@ You can generate a C# client for this API using NSwag. Follow these steps:
    nswag openapi2csclient /input:http://localhost:5000/swagger/v1/swagger.json /output:MiniCrmClient.cs
    ```
 
-This will generate a `MiniCrmClient.cs` file containing the C# client code for the API.
-
 ### Dependencies:
 
 NSwag uses Newtonsoft.Json for JSON serialization and deserialization. Ensure you have the following dependencies installed in your project:
@@ -89,6 +87,17 @@ You can add this dependency to your project by running:
 dotnet add package Newtonsoft.Json --version 13.0.1
 ```
 
+This will generate a `MiniCrmClient.cs` file containing the C# client code for the API.
+
+## Generating Clients in Other Languages:
+
+You can also generate clients for this API in other languages such as Python, JavaScript, and TypeScript. Here are some tools you can use:
+
+- **Python**: Use tools like `swagger-codegen` or `openapi-generator` to generate a Python client.
+- **JavaScript**: Use tools like `swagger-js-codegen` or `openapi-generator` to generate a JavaScript client.
+- **TypeScript**: Use tools like `swagger-typescript-api` or `openapi-generator` to generate a TypeScript client.
+
+Refer to the documentation of these tools for detailed instructions on how to generate clients in these languages.
 
 ## Example Requests:
 
