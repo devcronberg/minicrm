@@ -1,8 +1,8 @@
 # MiniCRM
 
-Welcome to MiniCRM. This project serves as a REST backend for a simple CRM application, demonstrating basic CRUD operations in a .NET 9.0 Web API project. It is also utilized in training and assignments for courses instructed by [Michell Cronberg](https://mcronberg.github.io/bogenomcsharp/diverse/ommichell.html).
+This project serves as a REST backend for a simple CRM application, demonstrating basic CRUD operations in a .NET 9.0 Web API project. It is also utilized in training and assignments for courses instructed by [Michell Cronberg](https://mcronberg.github.io/bogenomcsharp/diverse/ommichell.html).
 
-## Available endpoints:
+## Available endpoints
 
 - **GET /customers** - Get all customers
 - **GET /customers/{id}** - Get a customer by ID
@@ -15,7 +15,9 @@ Welcome to MiniCRM. This project serves as a REST backend for a simple CRM appli
 - **GET /test?text={text}** - Returns the provided text (mirror)
 - **GET /version** - Returns the version (major.minor.build)
 
-## Customer class:
+## Customer class
+
+The API works with a `Customer` class that has the following properties:
 
 ```csharp
 public class Customer
@@ -31,7 +33,7 @@ public class Customer
 }
 ```
 
-## Getting Started:
+## Getting Started
 
 1. Clone the repository to your local machine. You can also download the repository as a ZIP file and extract it to a local directory.
 2. Ensure you have .NET 9.0 SDK installed on your machine.
