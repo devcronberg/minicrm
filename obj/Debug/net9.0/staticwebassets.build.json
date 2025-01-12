@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "Q9jixqAQi2apCEpSQP6PGHeGdIwgWRKbTy+Z6HBdsD0=",
+  "Source": "MiniCrm",
+  "BasePath": "_content/MiniCrm",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

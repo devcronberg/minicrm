@@ -1,0 +1,57 @@
+@baseUrl = http://localhost:5000
+
+### Get all customers
+GET {{baseUrl}}/customers
+
+### Get a customer by ID
+GET {{baseUrl}}/customers/1
+
+### Find customers by name
+GET {{baseUrl}}/customers/findbyname/John
+
+### Create a new customer
+POST {{baseUrl}}/customers
+Content-Type: application/json
+
+{
+  "name": "Alice Johnson",
+  "age": 28,
+  "country": "USA",
+  "revenue": 85000.00,
+  "createdDate": "2024-08-01T00:00:00",
+  "isActive": true,
+  "tags": ["new", "tech"]
+}
+
+### Update an existing customer
+PUT {{baseUrl}}/api/customers/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "John Doe Updated",
+  "age": 31,
+  "country": "USA",
+  "revenue": 155000.50,
+  "createdDate": "2023-01-01T00:00:00",
+  "isActive": true,
+  "tags": ["vip", "regular"]
+}
+
+### Partially update an existing customer
+PATCH {{baseUrl}}/api/customers/1
+Content-Type: application/json
+
+{
+  "age": 32,
+  "revenue": 160000.00
+}
+
+### Delete a customer
+DELETE {{baseUrl}}/api/customers/1
+
+### Test endpoint
+GET {{baseUrl}}/test?text=Hello
+
+### Version endpoint
+GET {{baseUrl}}/version

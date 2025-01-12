@@ -1,0 +1,317 @@
+[
+    {
+      "name": "John Doe",
+      "age": 30,
+      "country": "USA",
+      "revenue": 150000.50,
+      "createdDate": "2023-01-01T00:00:00",
+      "isActive": true,
+      "tags": ["vip", "regular"]
+    },
+    {
+      "name": "Jane Smith",
+      "age": 25,
+      "country": "Canada",
+      "revenue": 75000.25,
+      "createdDate": "2023-01-02T00:00:00",
+      "isActive": true,
+      "tags": ["new"]
+    },
+    {
+      "name": "Michael Johnson",
+      "age": 45,
+      "country": "UK",
+      "revenue": 250000.00,
+      "createdDate": "2023-02-15T00:00:00",
+      "isActive": true,
+      "tags": ["vip", "enterprise"]
+    },
+    {
+      "name": "Emma Wilson",
+      "age": 33,
+      "country": "Australia",
+      "revenue": 120000.75,
+      "createdDate": "2023-03-01T00:00:00",
+      "isActive": true,
+      "tags": ["regular"]
+    },
+    {
+      "name": "Lars Nielsen",
+      "age": 42,
+      "country": "Denmark",
+      "revenue": 190000.00,
+      "createdDate": "2024-03-15T00:00:00",
+      "isActive": true,
+      "tags": ["enterprise", "energy"]
+    },
+    {
+      "name": "James Wilson",
+      "age": 44,
+      "country": "USA",
+      "revenue": 195000.50,
+      "createdDate": "2023-07-01T00:00:00",
+      "isActive": true,
+      "tags": ["vip", "tech"]
+    },
+    {
+      "name": "Thomas Anderson",
+      "age": 43,
+      "country": "Canada",
+      "revenue": 198000.25,
+      "createdDate": "2023-10-15T00:00:00",
+      "isActive": true,
+      "tags": ["vip", "consulting"]
+    },
+    {
+      "name": "Sarah Thompson",
+      "age": 31,
+      "country": "UK",
+      "revenue": 128000.75,
+      "createdDate": "2023-12-01T00:00:00",
+      "isActive": true,
+      "tags": ["tech"]
+    },
+    {
+      "name": "Olivia Brown",
+      "age": 29,
+      "country": "Australia",
+      "revenue": 97000.50,
+      "createdDate": "2024-01-01T00:00:00",
+      "isActive": true,
+      "tags": ["regular"]
+    },
+    {
+      "name": "Raj Patel",
+      "age": 39,
+      "country": "Denmark",
+      "revenue": 175000.00,
+      "createdDate": "2024-01-15T00:00:00",
+      "isActive": true,
+      "tags": ["enterprise", "tech"]
+    },
+    {
+      "name": "Carlos Rodriguez",
+      "age": 40,
+      "country": "USA",
+      "revenue": 165000.00,
+      "createdDate": "2023-11-15T00:00:00",
+      "isActive": true,
+      "tags": ["enterprise", "manufacturing"]
+    },
+    {
+      "name": "Laura Murphy",
+      "age": 34,
+      "country": "Canada",
+      "revenue": 115000.50,
+      "createdDate": "2023-11-01T00:00:00",
+      "isActive": true,
+      "tags": ["regular"]
+    },
+    {
+      "name": "David Cohen",
+      "age": 45,
+      "country": "UK",
+      "revenue": 245000.25,
+      "createdDate": "2024-02-15T00:00:00",
+      "isActive": true,
+      "tags": ["vip", "tech"]
+    },
+    {
+      "name": "Fatima Hassan",
+      "age": 36,
+      "country": "Australia",
+      "revenue": 132000.50,
+      "createdDate": "2024-03-01T00:00:00",
+      "isActive": true,
+      "tags": ["regular", "consulting"]
+    },
+    {
+      "name": "Sophia Papadopoulos",
+      "age": 30,
+      "country": "Denmark",
+      "revenue": 105000.75,
+      "createdDate": "2024-04-01T00:00:00",
+      "isActive": true,
+      "tags": ["regular", "tourism"]
+    },
+    {
+      "name": "Chen Wei",
+      "age": 42,
+      "country": "USA",
+      "revenue": 300000.00,
+      "createdDate": "2023-04-15T00:00:00",
+      "isActive": true,
+      "tags": ["enterprise", "international"]
+    },
+    {
+      "name": "Isabella Santos",
+      "age": 32,
+      "country": "Canada",
+      "revenue": 110000.50,
+      "createdDate": "2023-09-01T00:00:00",
+      "isActive": true,
+      "tags": ["regular"]
+    },
+    {
+      "name": "Marco Rossi",
+      "age": 36,
+      "country": "UK",
+      "revenue": 135000.75,
+      "createdDate": "2023-05-15T00:00:00",
+      "isActive": true,
+      "tags": ["vip", "retail"]
+    },
+    {
+      "name": "Emma Wilson",
+      "age": 33,
+      "country": "Australia",
+      "revenue": 120000.75,
+      "createdDate": "2023-03-01T00:00:00",
+      "isActive": true,
+      "tags": ["regular"]
+    },
+    {
+      "name": "Lars Nielsen",
+      "age": 42,
+      "country": "Denmark",
+      "revenue": 190000.00,
+      "createdDate": "2024-03-15T00:00:00",
+      "isActive": true,
+      "tags": ["enterprise", "energy"]
+    },
+    {
+      "name": "James Wilson",
+      "age": 44,
+      "country": "USA",
+      "revenue": 195000.50,
+      "createdDate": "2023-07-01T00:00:00",
+      "isActive": true,
+      "tags": ["vip", "tech"]
+    },
+    {
+      "name": "Thomas Anderson",
+      "age": 43,
+      "country": "Canada",
+      "revenue": 198000.25,
+      "createdDate": "2023-10-15T00:00:00",
+      "isActive": true,
+      "tags": ["vip", "consulting"]
+    },
+    {
+      "name": "Sarah Thompson",
+      "age": 31,
+      "country": "UK",
+      "revenue": 128000.75,
+      "createdDate": "2023-12-01T00:00:00",
+      "isActive": true,
+      "tags": ["tech"]
+    },
+    {
+      "name": "Olivia Brown",
+      "age": 29,
+      "country": "Australia",
+      "revenue": 97000.50,
+      "createdDate": "2024-01-01T00:00:00",
+      "isActive": true,
+      "tags": ["regular"]
+    },
+    {
+      "name": "Raj Patel",
+      "age": 39,
+      "country": "Denmark",
+      "revenue": 175000.00,
+      "createdDate": "2024-01-15T00:00:00",
+      "isActive": true,
+      "tags": ["enterprise", "tech"]
+    },
+    {
+      "name": "Carlos Rodriguez",
+      "age": 40,
+      "country": "USA",
+      "revenue": 165000.00,
+      "createdDate": "2023-11-15T00:00:00",
+      "isActive": true,
+      "tags": ["enterprise", "manufacturing"]
+    },
+    {
+      "name": "Laura Murphy",
+      "age": 34,
+      "country": "Canada",
+      "revenue": 115000.50,
+      "createdDate": "2023-11-01T00:00:00",
+      "isActive": true,
+      "tags": ["regular"]
+    },
+    {
+      "name": "David Cohen",
+      "age": 45,
+      "country": "UK",
+      "revenue": 245000.25,
+      "createdDate": "2024-02-15T00:00:00",
+      "isActive": true,
+      "tags": ["vip", "tech"]
+    },
+    {
+      "name": "Fatima Hassan",
+      "age": 36,
+      "country": "Australia",
+      "revenue": 132000.50,
+      "createdDate": "2024-03-01T00:00:00",
+      "isActive": true,
+      "tags": ["regular", "consulting"]
+    },
+    {
+      "name": "Sophia Papadopoulos",
+      "age": 30,
+      "country": "Denmark",
+      "revenue": 105000.75,
+      "createdDate": "2024-04-01T00:00:00",
+      "isActive": true,
+      "tags": ["regular", "tourism"]
+    },
+    {
+      "name": "Erik Svensson",
+      "age": 40,
+      "country": "Sweden",
+      "revenue": 180000.00,
+      "createdDate": "2024-05-01T00:00:00",
+      "isActive": true,
+      "tags": ["vip", "tech"]
+    },
+    {
+      "name": "Anna Larsson",
+      "age": 35,
+      "country": "Sweden",
+      "revenue": 120000.50,
+      "createdDate": "2024-05-15T00:00:00",
+      "isActive": true,
+      "tags": ["regular", "finance"]
+    },
+    {
+      "name": "Lars Johansson",
+      "age": 50,
+      "country": "Sweden",
+      "revenue": 250000.75,
+      "createdDate": "2024-06-01T00:00:00",
+      "isActive": true,
+      "tags": ["enterprise", "manufacturing"]
+    },
+    {
+      "name": "Karin Andersson",
+      "age": 28,
+      "country": "Sweden",
+      "revenue": 95000.25,
+      "createdDate": "2024-06-15T00:00:00",
+      "isActive": true,
+      "tags": ["startup", "tech"]
+    },
+    {
+      "name": "Olof Nilsson",
+      "age": 45,
+      "country": "Sweden",
+      "revenue": 200000.00,
+      "createdDate": "2024-07-01T00:00:00",
+      "isActive": true,
+      "tags": ["vip", "energy"]
+    }
+  ]
