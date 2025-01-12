@@ -1,6 +1,6 @@
 # MiniCRM
 
-This project serves as a REST backend for a simple CRM application, demonstrating basic CRUD operations in a .NET 9.0 Web API project. It is also utilized in training and assignments for courses instructed by [Michell Cronberg](https://mcronberg.github.io/bogenomcsharp/diverse/ommichell.html).
+This project serves as a REST backend for a simple CRM application, demonstrating basic CRUD operations in a .NET 9.0 Web API project. It is also utilized in C#/TS/JS/HtmlX/Python training and assignments for courses instructed by [Michell Cronberg](https://mcronberg.github.io/bogenomcsharp/diverse/ommichell.html).
 
 ## Available endpoints
 
@@ -40,11 +40,11 @@ public class Customer
 3. Run the project by running `dotnet run`.
 4. Open your web browser and navigate to `http://localhost:5000` (Swagger is integrated into this project to provide interactive API documentation).
 
-## Database Initialization:
+## Database Initialization
 
 When you run the project for the first time, it will check if a `customers.db` file exists. If it does, you will be prompted to delete it and start fresh. If you choose to delete it, a new database will be created and pre-seeded with data from the `customers.json` file.
 
-## Testing the API:
+## Testing the API
 
 There is a `test.http` file included in this project that you can use to test the API endpoints.
 
@@ -53,7 +53,7 @@ To use the `test.http` file in Visual Studio Code:
 2. Open the `test.http` file in Visual Studio Code.
 3. Click on the "Send Request" links that appear above each request to execute them.
 
-## Swagger Documentation:
+## Swagger Documentation
 
 Swagger is integrated into this project to provide interactive API documentation. You can access the Swagger UI at the root URL of the application.
 
@@ -62,7 +62,9 @@ To view the Swagger UI:
 2. Open your web browser and navigate to `http://localhost:5000`.
 3. You will see the Swagger UI, which lists all available endpoints and allows you to interact with them.
 
-## Generating a C# Client using NSwag:
+## Generating a C# Client using NSwag
+
+You can talk directly to the API using pure http requests (like `HttpClient` i C#), but you can also generate a C# client to interact with the API programmatically. This can be useful if you are building a .NET application that needs to communicate with the API.
 
 You can generate a C# client for this API using NSwag. Follow these steps:
 
@@ -76,6 +78,8 @@ You can generate a C# client for this API using NSwag. Follow these steps:
    nswag openapi2csclient /input:http://localhost:5000/swagger/v1/swagger.json /output:MiniCrmClient.cs
    ```
 
+This will generate a `MiniCrmClient.cs` file containing the C# client code for the API.
+
 ### Dependencies:
 
 NSwag uses Newtonsoft.Json for JSON serialization and deserialization. Ensure you have the following dependencies installed in your project:
@@ -86,9 +90,6 @@ You can add this dependency to your project by running:
 ```sh
 dotnet add package Newtonsoft.Json --version 13.0.1
 ```
-
-This will generate a `MiniCrmClient.cs` file containing the C# client code for the API.
-
 ## Generating Clients in Other Languages:
 
 You can also generate clients for this API in other languages such as Python, JavaScript, and TypeScript. Here are some tools you can use:
