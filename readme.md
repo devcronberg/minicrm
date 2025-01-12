@@ -50,7 +50,44 @@ To use the `test.http` file in Visual Studio Code:
 1. Install the REST Client extension from the Visual Studio Code marketplace.
 2. Open the `test.http` file in Visual Studio Code.
 3. Click on the "Send Request" links that appear above each request to execute them.
-   
+
+## Swagger Documentation:
+
+Swagger is integrated into this project to provide interactive API documentation. You can access the Swagger UI at the root URL of the application.
+
+To view the Swagger UI:
+1. Run the project by running `dotnet run`.
+2. Open your web browser and navigate to `http://localhost:5000`.
+3. You will see the Swagger UI, which lists all available endpoints and allows you to interact with them.
+
+## Generating a C# Client using NSwag:
+
+You can generate a C# client for this API using NSwag. Follow these steps:
+
+1. Install the NSwag CLI tool:
+   ```sh
+   dotnet tool install -g NSwag.ConsoleCore
+   ```
+
+2. Generate the C# client code:
+   ```sh
+   nswag openapi2csclient /input:http://localhost:5000/swagger/v1/swagger.json /output:MiniCrmClient.cs
+   ```
+
+This will generate a `MiniCrmClient.cs` file containing the C# client code for the API.
+
+### Dependencies:
+
+NSwag uses Newtonsoft.Json for JSON serialization and deserialization. Ensure you have the following dependencies installed in your project:
+
+- `Newtonsoft.Json` (version 13.0.1 or later)
+
+You can add this dependency to your project by running:
+```sh
+dotnet add package Newtonsoft.Json --version 13.0.1
+```
+
+
 ## Example Requests:
 
 1. **Get all customers:**
