@@ -36,6 +36,7 @@ public class Customer
 1. Clone the repository to your local machine. You can also download the repository as a ZIP file and extract it to a local directory.
 2. Ensure you have .NET 9.0 SDK installed on your machine.
 3. Run the project by running `dotnet run`.
+4. Open your web browser and navigate to `http://localhost:5000` (Swagger is integrated into this project to provide interactive API documentation).
 
 ## Database Initialization:
 
@@ -49,7 +50,7 @@ To use the `test.http` file in Visual Studio Code:
 1. Install the REST Client extension from the Visual Studio Code marketplace.
 2. Open the `test.http` file in Visual Studio Code.
 3. Click on the "Send Request" links that appear above each request to execute them.
-
+   
 ## Example Requests:
 
 1. **Get all customers:**
@@ -125,4 +126,6 @@ To use the `test.http` file in Visual Studio Code:
    ```http
    GET http://localhost:5000/version
    ```
+
+We hope you find this MiniCRM useful for your projects. Happy coding!
 

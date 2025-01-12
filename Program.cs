@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 using System.IO;
 using System.Reflection;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,24 @@ builder.Services.AddDbContext<CustomerDbContext>(options =>
     options.UseSqlite("Data Source=customers.db"));
 
 builder.Services.AddControllers();
+
+// Add Swagger services
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "MiniCRM API",
+        Version = "v1",
+        Description = "A simple example ASP.NET Core Web API for a mini CRM application",
+        Contact = new OpenApiContact
+        {
+            Name = "Repository",
+            Url = new Uri("https://github.com/devcronberg/minicrm")
+        }
+    });
+});
+
 var app = builder.Build();
 
 // Inform the user about the readme.md file
@@ -29,6 +48,16 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/error");
 }
+
+// Enable middleware to serve generated Swagger as a JSON endpoint
+app.UseSwagger();
+
+// Enable middleware to serve Swagger UI at the root URL
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "MiniCRM API v1");
+    c.RoutePrefix = string.Empty; // Serve the Swagger UI at the app's root
+});
 
 app.UseRouting();
 
