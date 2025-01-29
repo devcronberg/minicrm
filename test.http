@@ -7,7 +7,7 @@ GET {{baseUrl}}/customers
 GET {{baseUrl}}/customers/1
 
 ### Find customers by name
-GET {{baseUrl}}/customers/findbyname/John
+GET {{baseUrl}}/customers/findbyname/Lars
 
 ### Create a new customer
 POST {{baseUrl}}/customers

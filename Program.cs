@@ -109,17 +109,20 @@ void ConfigureEndpoints(WebApplication app)
 {
     app.MapGet("/customers", async (CustomerDbContext db) =>
     {
+        Console.WriteLine("GET /customers");
         return Results.Ok(await db.Customers.ToListAsync());
     });
 
     app.MapGet("/customers/{id}", async (CustomerDbContext db, int id) =>
     {
+        Console.WriteLine($"GET /customers/{id}");
         var customer = await db.Customers.FindAsync(id);
         return customer != null ? Results.Ok(customer) : Results.NotFound();
     });
 
     app.MapGet("/customers/findbyname/{name}", async (CustomerDbContext db, string name) =>
     {
+        Console.WriteLine($"GET /customers/findbyname/{name}");
         var customers = await db.Customers
             .Where(c => EF.Functions.Like(c.Name, $"%{name}%"))
             .ToListAsync();
@@ -128,6 +131,7 @@ void ConfigureEndpoints(WebApplication app)
 
     app.MapPost("/customers", async (CustomerDbContext db, Customer customer) =>
     {
+        Console.WriteLine("POST /customers");
         db.Customers.Add(customer);
         await db.SaveChangesAsync();
         return Results.Created($"/customers/{customer.Id}", customer);
@@ -135,6 +139,7 @@ void ConfigureEndpoints(WebApplication app)
 
     app.MapPost("/api/customers", async (CustomerDbContext db, Customer customer) =>
     {
+        Console.WriteLine("POST /api/customers");
         db.Customers.Add(customer);
         await db.SaveChangesAsync();
         return Results.Created($"/api/customers/{customer.Id}", customer);
@@ -142,6 +147,7 @@ void ConfigureEndpoints(WebApplication app)
 
     app.MapPut("/api/customers/{id}", async (CustomerDbContext db, int id, Customer updatedCustomer) =>
     {
+        Console.WriteLine($"PUT /api/customers/{id}");
         var customer = await db.Customers.FindAsync(id);
         if (customer == null)
         {
@@ -162,6 +168,7 @@ void ConfigureEndpoints(WebApplication app)
 
     app.MapPatch("/api/customers/{id}", async (CustomerDbContext db, int id, JsonElement updates) =>
     {
+        Console.WriteLine($"PATCH /api/customers/{id}");
         var customer = await db.Customers.FindAsync(id);
         if (customer == null)
         {
@@ -202,6 +209,7 @@ void ConfigureEndpoints(WebApplication app)
 
     app.MapDelete("/api/customers/{id}", async (CustomerDbContext db, int id) =>
     {
+        Console.WriteLine($"DELETE /api/customers/{id}");
         var customer = await db.Customers.FindAsync(id);
         if (customer == null)
         {
@@ -216,12 +224,14 @@ void ConfigureEndpoints(WebApplication app)
     // Add a /test endpoint that returns a text (mirror)
     app.MapGet("/test", (string text) =>
     {
+        Console.WriteLine($"GET /test: {text}");
         return Results.Ok(text);
     });
 
     // Add a /version endpoint that returns the version
     app.MapGet("/version", () =>
     {
+        Console.WriteLine("GET /version");
         var version = Assembly.GetExecutingAssembly().GetName().Version;
         return Results.Ok($"{version?.Major}.{version?.Minor}.{version?.Build}");
     });
