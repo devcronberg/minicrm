@@ -43,6 +43,8 @@ Console.WriteLine("Welcome to this MiniCRM. For more information, please refer t
 // Handle database initialization
 HandleDatabaseInitialization(app);
 
+Console.WriteLine("Starting the application - listening on port http://localhost:5000 - Press Ctrl+C to exit.");
+
 // Configure the HTTP request pipeline
 if (!app.Environment.IsDevelopment())
 {
