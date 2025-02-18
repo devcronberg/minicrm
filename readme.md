@@ -44,6 +44,17 @@ public class Customer
 
 When you run the project for the first time, it will check if a `customers.db` file exists. If it does, you will be prompted to delete it and start fresh. If you choose to delete it, a new database will be created and pre-seeded with data from the `customers.json` file.
 
+## Error factor and delay
+
+To simulate real-world scenarios, the API includes an error factor and delay mechanism. This can be useful for testing how your application handles network latency and random errors.
+
+### Configuring Error Factor and Delay
+
+You can configure the error factor and delay by setting the following variables in appsettings.json:
+
+- `errorFactor`: A value between 0 and 1 that determines the probability of an error occurring. For example, setting `errorFactor` to `0.1` means there is a 10% chance of an error occurring on each request.
+- `delay`: The amount of delay (in milliseconds) to introduce in each request. For example, setting `delay` to `500` will introduce a 500ms delay in each request.
+
 ## Testing the API
 
 There is a `test.http` file included in this project that you can use to test the API endpoints.

@@ -3,8 +3,14 @@ using System.Text.Json;
 using System.IO;
 using System.Reflection;
 using Microsoft.OpenApi.Models;
+using System.Globalization;
+using System.Threading;
+
+Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
+Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
 
 var builder = WebApplication.CreateBuilder(args);
+AppSettings? appSettings = builder.Configuration.GetSection("AppSettings").Get<AppSettings>();
 
 // Configure Kestrel to use port 5000
 builder.WebHost.ConfigureKestrel(options =>
@@ -39,7 +45,8 @@ var app = builder.Build();
 
 // Inform the user about the readme.md file
 Console.WriteLine("Welcome to this MiniCRM. For more information, please refer to the readme.md file.");
-
+Console.WriteLine($"Using errorFactor (appsettings): {appSettings!.ErrorFactor}");
+Console.WriteLine($"Using delay (appsettings): {appSettings!.Delay}");
 // Handle database initialization
 HandleDatabaseInitialization(app);
 
@@ -112,12 +119,21 @@ void ConfigureEndpoints(WebApplication app)
     app.MapGet("/customers", async (CustomerDbContext db) =>
     {
         Console.WriteLine("GET /customers");
+        await Task.Delay(appSettings.Delay);
+        
+        if (Random.Shared.NextDouble() < appSettings.ErrorFactor)
+            return Results.StatusCode(500);
+
         return Results.Ok(await db.Customers.ToListAsync());
     });
 
     app.MapGet("/customers/{id}", async (CustomerDbContext db, int id) =>
     {
         Console.WriteLine($"GET /customers/{id}");
+        await Task.Delay(appSettings.Delay);
+        if (Random.Shared.NextDouble() < appSettings.ErrorFactor)
+            return Results.StatusCode(500);
+
         var customer = await db.Customers.FindAsync(id);
         return customer != null ? Results.Ok(customer) : Results.NotFound();
     });
@@ -125,6 +141,10 @@ void ConfigureEndpoints(WebApplication app)
     app.MapGet("/customers/findbyname/{name}", async (CustomerDbContext db, string name) =>
     {
         Console.WriteLine($"GET /customers/findbyname/{name}");
+        await Task.Delay(appSettings.Delay);
+        if (Random.Shared.NextDouble() < appSettings.ErrorFactor)
+            return Results.StatusCode(500);
+
         var customers = await db.Customers
             .Where(c => EF.Functions.Like(c.Name, $"%{name}%"))
             .ToListAsync();
@@ -134,6 +154,10 @@ void ConfigureEndpoints(WebApplication app)
     app.MapPost("/customers", async (CustomerDbContext db, Customer customer) =>
     {
         Console.WriteLine("POST /customers");
+        await Task.Delay(appSettings.Delay);
+        if (Random.Shared.NextDouble() < appSettings.ErrorFactor)
+            return Results.StatusCode(500);
+
         db.Customers.Add(customer);
         await db.SaveChangesAsync();
         return Results.Created($"/customers/{customer.Id}", customer);
@@ -142,6 +166,10 @@ void ConfigureEndpoints(WebApplication app)
     app.MapPost("/api/customers", async (CustomerDbContext db, Customer customer) =>
     {
         Console.WriteLine("POST /api/customers");
+        await Task.Delay(appSettings.Delay);
+        if (Random.Shared.NextDouble() < appSettings.ErrorFactor)
+            return Results.StatusCode(500);
+
         db.Customers.Add(customer);
         await db.SaveChangesAsync();
         return Results.Created($"/api/customers/{customer.Id}", customer);
@@ -150,6 +178,10 @@ void ConfigureEndpoints(WebApplication app)
     app.MapPut("/api/customers/{id}", async (CustomerDbContext db, int id, Customer updatedCustomer) =>
     {
         Console.WriteLine($"PUT /api/customers/{id}");
+        await Task.Delay(appSettings.Delay);
+        if (Random.Shared.NextDouble() < appSettings.ErrorFactor)
+            return Results.StatusCode(500);
+
         var customer = await db.Customers.FindAsync(id);
         if (customer == null)
         {
@@ -171,6 +203,10 @@ void ConfigureEndpoints(WebApplication app)
     app.MapPatch("/api/customers/{id}", async (CustomerDbContext db, int id, JsonElement updates) =>
     {
         Console.WriteLine($"PATCH /api/customers/{id}");
+        await Task.Delay(appSettings.Delay);
+        if (Random.Shared.NextDouble() < appSettings.ErrorFactor)
+            return Results.StatusCode(500);
+
         var customer = await db.Customers.FindAsync(id);
         if (customer == null)
         {
@@ -212,6 +248,10 @@ void ConfigureEndpoints(WebApplication app)
     app.MapDelete("/api/customers/{id}", async (CustomerDbContext db, int id) =>
     {
         Console.WriteLine($"DELETE /api/customers/{id}");
+        await Task.Delay(appSettings.Delay);
+        if (Random.Shared.NextDouble() < appSettings.ErrorFactor)
+            return Results.StatusCode(500);
+
         var customer = await db.Customers.FindAsync(id);
         if (customer == null)
         {
@@ -224,16 +264,24 @@ void ConfigureEndpoints(WebApplication app)
     });
 
     // Add a /test endpoint that returns a text (mirror)
-    app.MapGet("/test", (string text) =>
+    app.MapGet("/test", async (string text) =>
     {
         Console.WriteLine($"GET /test: {text}");
+        await Task.Delay(appSettings.Delay);
+        if (Random.Shared.NextDouble() < appSettings.ErrorFactor)
+            return Results.StatusCode(500);
+
         return Results.Ok(text);
     });
 
     // Add a /version endpoint that returns the version
-    app.MapGet("/version", () =>
+    app.MapGet("/version", async () =>
     {
         Console.WriteLine("GET /version");
+        await Task.Delay(appSettings.Delay);
+        if (Random.Shared.NextDouble() < appSettings.ErrorFactor)
+            return Results.StatusCode(500);
+
         var version = Assembly.GetExecutingAssembly().GetName().Version;
         return Results.Ok($"{version?.Major}.{version?.Minor}.{version?.Build}");
     });
