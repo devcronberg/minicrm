@@ -6,66 +6,43 @@ This project serves as a REST backend for a simple CRM application, demonstratin
 
 ## Available endpoints
 
+### System
+
+- **GET /test?text={text}** - Returns the provided text (mirror)
+- **GET /version** - Returns the version (major.minor.build)
+
+### Customers (not authenticated)
+
 - **GET /customers** - Get all customers
 - **GET /customers/{id}** - Get a customer by ID
 - **GET /customers/findbyname/{name}** - Find customers by name
 - **POST /customers** - Create a new customer
-- **POST /api/customers** - Create a new customer
-- **PUT /api/customers/{id}** - Update an existing customer
-- **PATCH /api/customers/{id}** - Partially update an existing customer
-- **DELETE /api/customers/{id}** - Delete a customer
-- **GET /test?text={text}** - Returns the provided text (mirror)
-- **GET /version** - Returns the version (major.minor.build)
+- **POST /customers** - Create a new customer
+- **PUT /customers/{id}** - Update an existing customer
+- **PATCH /customers/{id}** - Partially update an existing customer
+- **DELETE /customers/{id}** - Delete a customer
 
-## Authentication Endpoints
+### Authentication Endpoints
 
 - **POST /auth/token** - Generate a new token
 - **POST /auth/refresh** - Refresh an expired token
 - **POST /auth/revoke** - Revoke a token
 - **POST /auth/validate** - Validate a token
 
-### Example Authentication Requests:
+### Customers (authenticated)
 
-1. **Generate a new token:**
-   ```http
-   POST http://localhost:5000/auth/token
-   Content-Type: application/json
+- **GET auth/customers** - Get all customers
+- **GET auth/customers/{id}** - Get a customer by ID
+- **GET auth/customers/findbyname/{name}** - Find customers by name
+- **POST auth/customers** - Create a new customer
+- **POST auth/customers** - Create a new customer
+- **PUT auth/customers/{id}** - Update an existing customer
+- **PATCH auth/customers/{id}** - Partially update an existing customer
+- **DELETE auth/customers/{id}** - Delete a customer
 
-   {
-     "clientId": "testClient",
-     "clientSecret": "testSecret"
-   }
-   ```
+### Examples
 
-2. **Refresh an expired token:**
-   ```http
-   POST http://localhost:5000/auth/refresh
-   Content-Type: application/json
-
-   {
-     "token": "your_expired_token"
-   }
-   ```
-
-3. **Revoke a token:**
-   ```http
-   POST http://localhost:5000/auth/revoke
-   Content-Type: application/json
-
-   {
-     "token": "your_token_to_revoke"
-   }
-   ```
-
-4. **Validate a token:**
-   ```http
-   POST http://localhost:5000/auth/validate
-   Content-Type: application/json
-
-   {
-     "token": "your_token_to_validate"
-   }
-   ```
+See thw two http-files in `/test` for examples.
 
 ## Test Clients
 
@@ -175,82 +152,3 @@ You can also generate clients for this API in other languages such as Python, Ja
 - **TypeScript**: Use tools like `swagger-typescript-api` or `openapi-generator` to generate a TypeScript client.
 
 Refer to the documentation of these tools for detailed instructions on how to generate clients in these languages.
-
-## Example Requests:
-
-1. **Get all customers:**
-   ```http
-   GET http://localhost:5000/customers
-   ```
-
-2. **Get a customer by ID:**
-   ```http
-   GET http://localhost:5000/customers/1
-   ```
-
-3. **Find customers by name:**
-   ```http
-   GET http://localhost:5000/customers/findbyname/John
-   ```
-
-4. **Create a new customer:**
-   ```http
-   POST http://localhost:5000/customers
-   Content-Type: application/json
-
-   {
-     "name": "Alice Johnson",
-     "age": 28,
-     "country": "USA",
-     "revenue": 85000.00,
-     "createdDate": "2024-08-01T00:00:00",
-     "isActive": true,
-     "tags": ["new", "tech"]
-   }
-   ```
-
-5. **Update an existing customer:**
-   ```http
-   PUT http://localhost:5000/api/customers/1
-   Content-Type: application/json
-
-   {
-     "id": 1,
-     "name": "John Doe Updated",
-     "age": 31,
-     "country": "USA",
-     "revenue": 155000.50,
-     "createdDate": "2023-01-01T00:00:00",
-     "isActive": true,
-     "tags": ["vip", "regular"]
-   }
-   ```
-
-6. **Partially update an existing customer:**
-   ```http
-   PATCH http://localhost:5000/api/customers/1
-   Content-Type: application/json
-
-   {
-     "age": 32,
-     "revenue": 160000.00
-   }
-   ```
-
-7. **Delete a customer:**
-   ```http
-   DELETE http://localhost:5000/api/customers/1
-   ```
-
-8. **Test endpoint:**
-   ```http
-   GET http://localhost:5000/test?text=Hello
-   ```
-
-9. **Version endpoint:**
-   ```http
-   GET http://localhost:5000/version
-   ```
-
-We hope you find this MiniCRM useful for your projects. Happy coding!
-
