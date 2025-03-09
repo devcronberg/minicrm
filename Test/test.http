@@ -24,7 +24,7 @@ Content-Type: application/json
 }
 
 ### Update an existing customer
-PUT {{baseUrl}}/api/customers/1
+PUT {{baseUrl}}/customers/1
 Content-Type: application/json
 
 {
@@ -39,7 +39,7 @@ Content-Type: application/json
 }
 
 ### Partially update an existing customer
-PATCH {{baseUrl}}/api/customers/1
+PATCH {{baseUrl}}/customers/1
 Content-Type: application/json
 
 {
@@ -48,7 +48,7 @@ Content-Type: application/json
 }
 
 ### Delete a customer
-DELETE {{baseUrl}}/api/customers/1
+DELETE {{baseUrl}}/customers/1
 
 ### Test endpoint
 GET {{baseUrl}}/test?text=Hello

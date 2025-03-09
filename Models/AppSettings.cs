@@ -1,3 +1,4 @@
+namespace MiniCrm.Models;
 public class AppSettings
 {
     public double ErrorFactor { get; set; }

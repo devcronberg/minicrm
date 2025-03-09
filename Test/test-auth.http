@@ -1,0 +1,58 @@
+@baseUrl = http://localhost:5000
+@clientId = testclient
+@clientSecret = testsecret
+
+# Should fail (401)
+### Get all customers
+GET {{baseUrl}}/auth/customers
+
+# get and save token
+###
+# @name login
+POST {{baseUrl}}/auth/token
+Content-Type: application/json
+
+{
+  "clientId": "{{clientId}}",
+  "clientSecret": "{{clientSecret}}"
+}
+
+### 
+@accessToken={{login.response.body.access_token}}
+###
+
+### Get all customers with token (should be ok)
+GET {{baseUrl}}/auth/customers
+Authorization: Bearer {{accessToken}} 
+
+
+###
+POST {{baseUrl}}/auth/refresh
+Authorization: Bearer {{accessToken}} 
+Content-Type: application/json
+
+{
+  "Token": "{{accessToken}}"  
+}
+
+
+# Revoke (and try to refresh or validate)
+###
+POST {{baseUrl}}/auth/revoke
+Authorization: Bearer {{accessToken}} 
+Content-Type: application/json
+
+{
+  "Token": "{{accessToken}}"  
+}
+
+# Validate token
+###
+
+POST {{baseUrl}}/auth/validate
+Authorization: Bearer {{accessToken}} 
+Content-Type: application/json
+
+{
+  "Token": "{{accessToken}}"  
+}

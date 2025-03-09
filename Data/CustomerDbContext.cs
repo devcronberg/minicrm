@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using MiniCrm.Models;
 
 public class CustomerDbContext : DbContext
 {

@@ -2,6 +2,8 @@
 
 This project serves as a REST backend for a simple CRM application, demonstrating basic CRUD operations in a .NET 9.0 Web API project. It is also utilized in C#/TS/JS/HtmlX/Python training and assignments for courses instructed by [Michell Cronberg](https://mcronberg.github.io/bogenomcsharp/diverse/ommichell.html).
 
+> WARNING: This repo is used in training and code should not be used in production.
+
 ## Available endpoints
 
 - **GET /customers** - Get all customers
@@ -14,6 +16,69 @@ This project serves as a REST backend for a simple CRM application, demonstratin
 - **DELETE /api/customers/{id}** - Delete a customer
 - **GET /test?text={text}** - Returns the provided text (mirror)
 - **GET /version** - Returns the version (major.minor.build)
+
+## Authentication Endpoints
+
+- **POST /auth/token** - Generate a new token
+- **POST /auth/refresh** - Refresh an expired token
+- **POST /auth/revoke** - Revoke a token
+- **POST /auth/validate** - Validate a token
+
+### Example Authentication Requests:
+
+1. **Generate a new token:**
+   ```http
+   POST http://localhost:5000/auth/token
+   Content-Type: application/json
+
+   {
+     "clientId": "testClient",
+     "clientSecret": "testSecret"
+   }
+   ```
+
+2. **Refresh an expired token:**
+   ```http
+   POST http://localhost:5000/auth/refresh
+   Content-Type: application/json
+
+   {
+     "token": "your_expired_token"
+   }
+   ```
+
+3. **Revoke a token:**
+   ```http
+   POST http://localhost:5000/auth/revoke
+   Content-Type: application/json
+
+   {
+     "token": "your_token_to_revoke"
+   }
+   ```
+
+4. **Validate a token:**
+   ```http
+   POST http://localhost:5000/auth/validate
+   Content-Type: application/json
+
+   {
+     "token": "your_token_to_validate"
+   }
+   ```
+
+## Test Clients
+
+For testing purposes, the following client credentials are configured in the `appsettings.json` file:
+
+```json
+"Clients": [
+  {
+    "ClientId": "testClient",
+    "ClientSecret": "testSecret"
+  }
+]
+```
 
 ## Customer class
 
