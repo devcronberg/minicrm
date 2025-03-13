@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using MiniCrm.Models;
 using MiniCrm.Services;
 
 namespace MiniCrm.Controllers;
@@ -18,6 +19,9 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("token")]
+    [ProducesResponseType(typeof(TokenResponse), 200)] // 💡 Gør NSwag i stand til at generere korrekt klientmetode
+    [ProducesResponseType(401)]
+    [Produces("application/json")]
     public IActionResult GenerateToken([FromBody] ClientCredentials credentials)
     {
         var clients = _configuration.GetSection("Clients").Get<List<ClientCredentials>>();
@@ -28,10 +32,14 @@ public class AuthController : ControllerBase
             return Unauthorized();
 
         var token = _jwtService.GenerateToken(credentials.ClientId);
-        return Ok(new { access_token = token });
+        return Ok(new TokenResponse() { access_token = token });
     }
 
+
+
     [HttpPost("refresh")]
+    [ProducesResponseType(typeof(TokenResponse), 200)]
+    [ProducesResponseType(401)]
     public IActionResult RefreshToken([FromBody] RefreshRequest request)
     {
         var principal = _jwtService.GetPrincipalFromExpiredToken(request.Token);
@@ -43,10 +51,12 @@ public class AuthController : ControllerBase
             return Unauthorized("Invalid token: client_id claim is missing");
 
         var newToken = _jwtService.GenerateToken(clientId);
-        return Ok(new { access_token = newToken });
+        return Ok(new TokenResponse { access_token = newToken });
     }
 
     [HttpPost("revoke")]
+    [ProducesResponseType(200)]
+    [ProducesResponseType(400)]
     public IActionResult RevokeToken([FromBody] RevokeRequest request)
     {
         var success = _jwtService.RevokeToken(request.Token);
@@ -57,16 +67,18 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("validate")]
+    [ProducesResponseType(typeof(bool), 200)]
+    [ProducesResponseType(400)]
     public IActionResult ValidateToken([FromBody] ValidateRequest request)
     {
         try
         {
             var principal = _jwtService.ValidateToken(request.Token);
-            return Ok(new { valid = true });
+            return Ok(true);
         }
         catch (SecurityTokenException)
         {
-            return Ok(new { valid = false });
+            return Ok(false);
         }
     }
 }

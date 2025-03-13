@@ -20,6 +20,7 @@
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
         <PackageReference Include="GraphQL" Version="7.0.0" />
         <PackageReference Include="GraphQL.Server.Transports.AspNetCore" Version="7.0.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="7.3.1" />
 
     </ItemGroup>
 

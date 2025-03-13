@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using MiniCrm.Models;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace MiniCrm.Controllers;
 
@@ -26,6 +27,7 @@ public class CustomerAuthController : ControllerBase
     [HttpGet]
     [ProducesResponseType(typeof(List<Customer>), 200)]
     [ProducesResponseType(500)]
+    [SwaggerOperation(OperationId = "CustomersAllAuth")]
     public async Task<IActionResult> GetCustomers()
     {
         Console.WriteLine("GET /auth/customers");
@@ -41,6 +43,7 @@ public class CustomerAuthController : ControllerBase
     [ProducesResponseType(typeof(Customer), 200)]
     [ProducesResponseType(404)]
     [ProducesResponseType(500)]
+    [SwaggerOperation(OperationId = "CustomersGETAuth")]
     public async Task<IActionResult> GetCustomer(int id)
     {
         Console.WriteLine($"GET /auth/customers/{id}");
@@ -56,6 +59,7 @@ public class CustomerAuthController : ControllerBase
     [HttpGet("findbyname/{name}")]
     [ProducesResponseType(typeof(List<Customer>), 200)]
     [ProducesResponseType(500)]
+    [SwaggerOperation(OperationId = "FindByNameAuth")]
     public async Task<IActionResult> FindCustomerByName(string name)
     {
         Console.WriteLine($"GET /auth/customers/findbyname/{name}");
@@ -74,6 +78,7 @@ public class CustomerAuthController : ControllerBase
     [ProducesResponseType(typeof(Customer), 201)]
     [ProducesResponseType(400)]
     [ProducesResponseType(500)]
+    [SwaggerOperation(OperationId = "CustomersPOSTAuth")]
     public async Task<IActionResult> CreateCustomer([FromBody] Customer customer)
     {
         Console.WriteLine("POST /auth/customers");
@@ -92,6 +97,7 @@ public class CustomerAuthController : ControllerBase
     [ProducesResponseType(404)]
     [ProducesResponseType(400)]
     [ProducesResponseType(500)]
+    [SwaggerOperation(OperationId = "CustomersPUTAuth")]
     public async Task<IActionResult> UpdateCustomer(int id, [FromBody] Customer updatedCustomer)
     {
         Console.WriteLine($"PUT /auth/customers/{id}");
@@ -123,6 +129,7 @@ public class CustomerAuthController : ControllerBase
     [ProducesResponseType(404)]
     [ProducesResponseType(400)]
     [ProducesResponseType(500)]
+    [SwaggerOperation(OperationId = "CustomersPATCHAuth")]
     public async Task<IActionResult> PatchCustomer(int id, [FromBody] JsonElement updates)
     {
         Console.WriteLine($"PATCH /auth/customers/{id}");
@@ -173,6 +180,7 @@ public class CustomerAuthController : ControllerBase
     [ProducesResponseType(204)]
     [ProducesResponseType(404)]
     [ProducesResponseType(500)]
+    [SwaggerOperation(OperationId = "CustomersDELETEAuth")]
     public async Task<IActionResult> DeleteCustomer(int id)
     {
         Console.WriteLine($"DELETE /auth/customers/{id}");
