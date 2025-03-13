@@ -86,6 +86,12 @@ public class Customer
 
 When you run the project for the first time, it will check if a `customers.db` file exists. If it does, you will be prompted to delete it and start fresh. If you choose to delete it, a new database will be created and pre-seeded with data from the `customers.json` file.
 
+If needed you can start the app with
+
+ ```
+ dotnet run -- /nodbinit
+ ``` 
+
 ## Error factor and delay
 
 To simulate real-world scenarios, the API includes an error factor and delay mechanism. This can be useful for testing how your application handles network latency and random errors.
@@ -126,13 +132,40 @@ You can generate a C# client for this API using NSwag. Follow these steps:
    dotnet tool install -g NSwag.ConsoleCore
    ```
 
-2. Generate the C# client code:
+2. Generate an console app, add NewtonSoft.Json and then generate the C# client code:
    ```sh
-   nswag openapi2csclient /input:http://localhost:5000/swagger/v1/swagger.json /output:MiniCrmClient.cs
+   dotnet new console -n MiniCrmClientTest
+   cd MiniCrmClientTest
+   dotnet add package Newtonsoft.Json 
+   nswag openapi2csclient /input:swagger.json /output:MiniCrmClient.cs /namespace:MiniCrmClient
    ```
+   This will generate a `MiniCrmClient.cs` file containing the C# client code for the API.
 
-This will generate a `MiniCrmClient.cs` file containing the C# client code for the API.
+3. Change program.cs to use the generated client code:
+   ```csharp
+    using MiniCrm.Client;
+    HttpClient httpClient = new HttpClient();
+    Client client = new Client("http://localhost:5000", httpClient);
 
+    Console.WriteLine((await client.VersionAsync()));
+    Console.WriteLine(await client.TestAsync("**"));
+    var r = (await client.CustomersAllAsync()).ToList();
+    r.ForEach(i => System.Console.WriteLine(i.Name));
+
+    // Auth
+
+    var tokenResponse = await client.TokenAsync(new ClientCredentials
+    {
+        ClientId = "testclient",
+        ClientSecret = "testsecret"
+    });
+    string token = tokenResponse.Access_token;
+    httpClient.DefaultRequestHeaders.Authorization =
+        new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+    var t = await client.FindByNameAuthAsync("lars");
+    t.ToList().ForEach(i => System.Console.WriteLine(i.Name));
+   ```
 ### Dependencies:
 
 NSwag uses Newtonsoft.Json for JSON serialization and deserialization. Ensure you have the following dependencies installed in your project:
