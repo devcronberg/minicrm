@@ -80,7 +80,7 @@ public class Customer
 1. Clone the repository to your local machine. You can also download the repository as a ZIP file and extract it to a local directory.
 2. Ensure you have .NET 9.0 SDK installed on your machine.
 3. Run the project by running `dotnet run`.
-4. Open your web browser and navigate to `http://localhost:5000` (Swagger is integrated into this project to provide interactive API documentation).
+4. Open your web browser and navigate to `http://localhost:5000/swagger` (Swagger is integrated into this project to provide interactive API documentation).
 
 ## Database Initialization
 
@@ -91,6 +91,8 @@ If needed you can start the app with
  ```
  dotnet run -- /nodbinit
  ``` 
+
+ to skip the database initialization.
 
 ## Error factor and delay
 
@@ -118,7 +120,7 @@ Swagger is integrated into this project to provide interactive API documentation
 
 To view the Swagger UI:
 1. Run the project by running `dotnet run`.
-2. Open your web browser and navigate to `http://localhost:5000`.
+2. Open your web browser and navigate to `http://localhost:5000/swagger`.
 3. You will see the Swagger UI, which lists all available endpoints and allows you to interact with them.
 
 ## Generating a C# Client using NSwag
