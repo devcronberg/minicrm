@@ -22,6 +22,8 @@ public class CustomerController : ControllerBase
     }
 
     [HttpGet]
+    [ProducesResponseType(typeof(List<Customer>), 200)]
+    [ProducesResponseType(500)]
     public async Task<IActionResult> GetCustomers()
     {
         Console.WriteLine("GET /customers");
@@ -34,6 +36,9 @@ public class CustomerController : ControllerBase
     }
 
     [HttpGet("{id}")]
+    [ProducesResponseType(typeof(Customer), 200)]
+    [ProducesResponseType(404)]
+    [ProducesResponseType(500)]
     public async Task<IActionResult> GetCustomer(int id)
     {
         Console.WriteLine($"GET /customers/{id}");
@@ -47,6 +52,8 @@ public class CustomerController : ControllerBase
     }
 
     [HttpGet("findbyname/{name}")]
+    [ProducesResponseType(typeof(List<Customer>), 200)]
+    [ProducesResponseType(500)]
     public async Task<IActionResult> FindCustomerByName(string name)
     {
         Console.WriteLine($"GET /customers/findbyname/{name}");
@@ -62,6 +69,9 @@ public class CustomerController : ControllerBase
     }
 
     [HttpPost]
+    [ProducesResponseType(typeof(Customer), 201)]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(500)]
     public async Task<IActionResult> CreateCustomer([FromBody] Customer customer)
     {
         Console.WriteLine("POST /customers");
@@ -76,6 +86,10 @@ public class CustomerController : ControllerBase
     }
 
     [HttpPut("{id}")]
+    [ProducesResponseType(204)]
+    [ProducesResponseType(404)]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(500)]
     public async Task<IActionResult> UpdateCustomer(int id, [FromBody] Customer updatedCustomer)
     {
         Console.WriteLine($"PUT /customers/{id}");
@@ -103,6 +117,10 @@ public class CustomerController : ControllerBase
     }
 
     [HttpPatch("{id}")]
+    [ProducesResponseType(204)]
+    [ProducesResponseType(404)]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(500)]
     public async Task<IActionResult> PatchCustomer(int id, [FromBody] JsonElement updates)
     {
         Console.WriteLine($"PATCH /customers/{id}");
@@ -150,6 +168,9 @@ public class CustomerController : ControllerBase
     }
 
     [HttpDelete("{id}")]
+    [ProducesResponseType(204)]
+    [ProducesResponseType(404)]
+    [ProducesResponseType(500)]
     public async Task<IActionResult> DeleteCustomer(int id)
     {
         Console.WriteLine($"DELETE /customers/{id}");

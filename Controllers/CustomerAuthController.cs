@@ -24,6 +24,8 @@ public class CustomerAuthController : ControllerBase
     }
 
     [HttpGet]
+    [ProducesResponseType(typeof(List<Customer>), 200)]
+    [ProducesResponseType(500)]
     public async Task<IActionResult> GetCustomers()
     {
         Console.WriteLine("GET /auth/customers");
@@ -36,6 +38,9 @@ public class CustomerAuthController : ControllerBase
     }
 
     [HttpGet("{id}")]
+    [ProducesResponseType(typeof(Customer), 200)]
+    [ProducesResponseType(404)]
+    [ProducesResponseType(500)]
     public async Task<IActionResult> GetCustomer(int id)
     {
         Console.WriteLine($"GET /auth/customers/{id}");
@@ -49,6 +54,8 @@ public class CustomerAuthController : ControllerBase
     }
 
     [HttpGet("findbyname/{name}")]
+    [ProducesResponseType(typeof(List<Customer>), 200)]
+    [ProducesResponseType(500)]
     public async Task<IActionResult> FindCustomerByName(string name)
     {
         Console.WriteLine($"GET /auth/customers/findbyname/{name}");
@@ -64,6 +71,9 @@ public class CustomerAuthController : ControllerBase
     }
 
     [HttpPost]
+    [ProducesResponseType(typeof(Customer), 201)]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(500)]
     public async Task<IActionResult> CreateCustomer([FromBody] Customer customer)
     {
         Console.WriteLine("POST /auth/customers");
@@ -78,6 +88,10 @@ public class CustomerAuthController : ControllerBase
     }
 
     [HttpPut("{id}")]
+    [ProducesResponseType(204)]
+    [ProducesResponseType(404)]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(500)]
     public async Task<IActionResult> UpdateCustomer(int id, [FromBody] Customer updatedCustomer)
     {
         Console.WriteLine($"PUT /auth/customers/{id}");
@@ -105,6 +119,10 @@ public class CustomerAuthController : ControllerBase
     }
 
     [HttpPatch("{id}")]
+    [ProducesResponseType(204)]
+    [ProducesResponseType(404)]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(500)]
     public async Task<IActionResult> PatchCustomer(int id, [FromBody] JsonElement updates)
     {
         Console.WriteLine($"PATCH /auth/customers/{id}");
@@ -152,6 +170,9 @@ public class CustomerAuthController : ControllerBase
     }
 
     [HttpDelete("{id}")]
+    [ProducesResponseType(204)]
+    [ProducesResponseType(404)]
+    [ProducesResponseType(500)]
     public async Task<IActionResult> DeleteCustomer(int id)
     {
         Console.WriteLine($"DELETE /auth/customers/{id}");

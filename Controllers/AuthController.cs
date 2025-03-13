@@ -18,6 +18,10 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("token")]
+    [ProducesResponseType(200)]
+    [ProducesResponseType(401)]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(500)]
     public IActionResult GenerateToken([FromBody] ClientCredentials credentials)
     {
         var clients = _configuration.GetSection("Clients").Get<List<ClientCredentials>>();
@@ -32,6 +36,10 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("refresh")]
+    [ProducesResponseType(200)]
+    [ProducesResponseType(401)]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(500)]
     public IActionResult RefreshToken([FromBody] RefreshRequest request)
     {
         var principal = _jwtService.GetPrincipalFromExpiredToken(request.Token);
@@ -47,6 +55,9 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("revoke")]
+    [ProducesResponseType(200)]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(500)]
     public IActionResult RevokeToken([FromBody] RevokeRequest request)
     {
         var success = _jwtService.RevokeToken(request.Token);
@@ -57,6 +68,8 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("validate")]
+    [ProducesResponseType(200)]
+    [ProducesResponseType(500)]
     public IActionResult ValidateToken([FromBody] ValidateRequest request)
     {
         try

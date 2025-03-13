@@ -1,5 +1,6 @@
 using System.Reflection;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using MiniCrm.Models;
 
 namespace MiniCrm.Controllers;
@@ -11,13 +12,16 @@ public class SystemController : ControllerBase
     private readonly IConfiguration _configuration;
     private readonly AppSettings _appSettings;
 
-    public SystemController(IConfiguration configuration, AppSettings appSettings)
+    public SystemController(IConfiguration configuration, IOptions<AppSettings> appSettings)
     {
         _configuration = configuration;
-        _appSettings = appSettings;
+        _appSettings = appSettings.Value;
     }
 
     [HttpGet("test")]
+    [ProducesResponseType(200)]
+    [ProducesResponseType(500)]
+    [ProducesResponseType(400)]
     public async Task<IActionResult> Test(string? text)
     {
         Console.WriteLine($"GET /test: {text}");
@@ -29,6 +33,8 @@ public class SystemController : ControllerBase
     }
 
     [HttpGet("version")]
+    [ProducesResponseType(200)]
+    [ProducesResponseType(500)]
     public async Task<IActionResult> Version()
     {
         Console.WriteLine($"GET /version");
