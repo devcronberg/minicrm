@@ -166,16 +166,6 @@ You can generate a C# client for this API using NSwag. Follow these steps:
     var t = await client.FindByNameAuthAsync("lars");
     t.ToList().ForEach(i => System.Console.WriteLine(i.Name));
    ```
-### Dependencies:
-
-NSwag uses Newtonsoft.Json for JSON serialization and deserialization. Ensure you have the following dependencies installed in your project:
-
-- `Newtonsoft.Json` (version 13.0.1 or later)
-
-You can add this dependency to your project by running:
-```sh
-dotnet add package Newtonsoft.Json --version 13.0.1
-```
 ## Generating Clients in Other Languages:
 
 You can also generate clients for this API in other languages such as Python, JavaScript, and TypeScript. Here are some tools you can use:
