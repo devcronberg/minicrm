@@ -56,6 +56,17 @@ internal class Program
         // Tilføj controllers
         builder.Services.AddControllers();
 
+        // Add CORS policy to allow all origins
+        builder.Services.AddCors(options =>
+        {
+            options.AddDefaultPolicy(policy =>
+            {
+                policy.AllowAnyOrigin()
+                      .AllowAnyMethod()
+                      .AllowAnyHeader();
+            });
+        });
+
         // Register JwtService
         builder.Services.AddScoped<JwtService>();
 
@@ -101,6 +112,9 @@ internal class Program
         app.UseSwagger();
         app.UseSwaggerUI();
         app.UseRouting();
+
+        // Use CORS middleware - must be called before UseAuthentication and UseAuthorization
+        app.UseCors();
 
         app.UseAuthentication();
         app.UseAuthorization();
