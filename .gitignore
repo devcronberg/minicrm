@@ -11,6 +11,10 @@
 *.sln.docstates
 
 customers.db
+# Temporary files and backups
+*.backup
+packages-microsoft-prod.deb
+
 # User-specific files (Mono Auto Generated)
 mono_crash.*
 
