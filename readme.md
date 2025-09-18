@@ -82,6 +82,17 @@ public class Customer
 3. Run the project by running `dotnet run`.
 4. Open your web browser and navigate to `http://localhost:5000/swagger` (Swagger is integrated into this project to provide interactive API documentation).
 
+## CORS (Cross-Origin Resource Sharing)
+
+CORS is a security feature implemented in web browsers to prevent requests for resources from different origins/domains unless explicitly allowed by the server. In this project, CORS is enabled for all origins, meaning any client can access the API. This is typically done to ease development and testing. Remember to restrict CORS as needed for production environments.
+
+The current CORS configuration allows:
+- **All origins** (`Access-Control-Allow-Origin: *`)
+- **All HTTP methods** (GET, POST, PUT, DELETE, etc.)
+- **All headers**
+
+This configuration ensures that web browsers and other clients can access the API from any domain without encountering CORS-related errors.
+
 ## Database Initialization
 
 When you run the project for the first time, it will check if a `customers.db` file exists. If it does, you will be prompted to delete it and start fresh. If you choose to delete it, a new database will be created and pre-seeded with data from the `customers.json` file.
