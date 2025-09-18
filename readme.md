@@ -42,7 +42,7 @@ This project serves as a REST backend for a simple CRM application, demonstratin
 
 ### Examples
 
-See thw two http-files in `/test` for examples.
+See the http-files and HTML/JS files in `/test` for examples.
 
 ## Test Clients
 
@@ -51,8 +51,8 @@ For testing purposes, the following client credentials are configured in the `ap
 ```json
 "Clients": [
   {
-    "ClientId": "testClient",
-    "ClientSecret": "testSecret"
+    "ClientId": "testclient",
+    "ClientSecret": "testsecret"
   }
 ]
 ```
@@ -118,12 +118,18 @@ You can configure the error factor and delay by setting the following variables 
 
 ## Testing the API
 
-There is a `test.http` file included in this project that you can use to test the API endpoints.
+There are test files included in this project that you can use to test the API endpoints:
 
-To use the `test.http` file in Visual Studio Code:
+- `test.http`: Basic API testing with HTTP requests
+- `test-auth.http`: Authentication flow testing
+- `test-api.html` and `test-api.js`: Browser-based CORS testing
+
+To use the `test.http` and `test-auth.http` files in Visual Studio Code:
 1. Install the REST Client extension from the Visual Studio Code marketplace.
-2. Open the `test.http` file in Visual Studio Code.
+2. Open the files in Visual Studio Code.
 3. Click on the "Send Request" links that appear above each request to execute them.
+
+For browser testing, open `test-api.html` in a browser and click the test button.
 
 ## Swagger Documentation
 

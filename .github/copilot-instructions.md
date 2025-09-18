@@ -80,6 +80,7 @@ curl -s -H "Authorization: Bearer $TOKEN" http://localhost:5000/auth/customers |
 ### Manual Testing with HTTP Files
 - Use Test/test.http for basic API testing
 - Use Test/test-auth.http for authentication flow testing
+- Use Test/test-api.html and Test/test-api.js for browser-based CORS testing
 - Install REST Client extension in VS Code to execute requests
 
 ### Swagger UI Testing
