@@ -81,12 +81,19 @@ curl -s -H "Authorization: Bearer $TOKEN" http://localhost:5000/auth/customers |
 - Use Test/test.http for basic API testing
 - Use Test/test-auth.http for authentication flow testing
 - Use Test/test-api.html and Test/test-api.js for browser-based CORS testing
+- Use UI/index.html for complete web interface testing
 - Install REST Client extension in VS Code to execute requests
 
 ### Swagger UI Testing
 - Access Swagger UI at http://localhost:5000/swagger
 - Use interactive documentation to test all endpoints
 - Verify authentication endpoints work with test credentials
+
+### Web UI Testing
+- Open UI/index.html in a web browser
+- Test all CRUD operations through the web interface
+- Verify modal forms work correctly
+- Check responsive design on different screen sizes
 
 ## Development Guidelines
 

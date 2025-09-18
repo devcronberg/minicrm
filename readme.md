@@ -42,7 +42,7 @@ This project serves as a REST backend for a simple CRM application, demonstratin
 
 ### Examples
 
-See the http-files and HTML/JS files in `/test` for examples.
+See the http-files and HTML/JS files in `/test` for examples. Also check out the `/UI` folder for a complete web interface.
 
 ## Test Clients
 
@@ -130,6 +130,41 @@ To use the `test.http` and `test-auth.http` files in Visual Studio Code:
 3. Click on the "Send Request" links that appear above each request to execute them.
 
 For browser testing, open `test-api.html` in a browser and click the test button.
+
+## Web UI
+
+A complete single-page web application for managing customers is available in the `/UI` folder:
+
+- `index.html`: The main HTML page with Tailwind CSS styling
+- `app.js`: JavaScript functionality for CRUD operations
+- `prompt.txt`: Detailed instructions for creating the application
+
+To use the web UI:
+1. Start the API server (`dotnet run`)
+2. Open `UI/index.html` in a web browser
+3. The interface will load all customers and allow full CRUD operations
+
+The UI provides both full editing capabilities and quick actions:
+- Click "Add New Customer" for a complete form
+- Click "Edit" button for full customer modification
+- Click the ✏️ icon next to any name for quick name editing
+- Click "Delete" for safe customer removal with confirmation
+
+The UI demonstrates:
+- Fetching customer data from the API
+- Creating, updating, and deleting customers via full modal forms
+- Quick editing of customer names via PATCH with inline modal
+- Modal forms for user interaction with auto-focus and text selection
+- Optimized DOM updates without full page reloads
+- Error handling for API calls
+
+### Features:
+- **Customer List**: Displays all customers in a responsive table
+- **Add Customer**: Modal form for creating new customers (POST)
+- **Edit Customer**: Full modal form for updating customers (PUT)
+- **Quick Edit Name**: Inline edit icon (✏️) for fast name changes (PATCH)
+- **Delete Customer**: Confirmation modal for safe deletion (DELETE)
+- **Performance Optimized**: No unnecessary API calls or page reloads
 
 ## Swagger Documentation
 

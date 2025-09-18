@@ -1,0 +1,134 @@
+# Prompt for Creating MiniCRM Customer Management UI
+
+Create a single-page web application for managing customers in the MiniCRM REST API. The application should be built using standard HTML, CSS (with Tailwind CSS), and JavaScript (no frameworks).
+
+## Requirements
+
+### General
+- Single HTML page with embedded CSS and JavaScript
+- Use Tailwind CSS via CDN for styling
+- Responsive design that works on desktop and mobile
+- Clean, modern UI with good UX
+
+### Features
+1. **Customer List Display**
+   - Display all customers in a table format
+   - Show: ID, Name, Age, Country, Revenue, Active status, Tags
+   - Format revenue as currency
+   - Show active/inactive status with colored badges
+   - Display tags as comma-separated values
+
+2. **Add New Customer**
+   - Button to open modal form
+   - Form fields: Name, Age, Country, Revenue, Active checkbox, Tags
+   - POST to /customers endpoint
+   - Refresh list after successful creation
+
+3. **Edit Existing Customer**
+   - Edit button for each customer row
+   - Pre-populate modal form with existing data
+   - PUT to /customers/{id} endpoint
+   - Refresh list after successful update
+
+4. **Delete Customer**
+   - Delete button for each customer row
+   - Confirmation modal before deletion
+   - DELETE to /customers/{id} endpoint
+   - Refresh list after successful deletion
+
+### Technical Details
+
+#### API Endpoints
+- GET /customers - Get all customers
+- POST /customers - Create new customer
+- PUT /customers/{id} - Update customer
+- DELETE /customers/{id} - Delete customer
+
+#### Customer Data Structure
+```javascript
+{
+  id: number,           // Auto-generated, not in forms
+  name: string,         // Required
+  age: number,          // Required
+  country: string,      // Required
+  revenue: number,      // Required
+  createdDate: string,  // Auto-generated, not in forms
+  isActive: boolean,    // Required
+  tags: string[]        // Optional, array of strings
+}
+```
+
+#### UI Components
+- Main table for customer list
+- Modal dialog for add/edit forms
+- Confirmation modal for delete
+- Loading states and error handling
+- Success/error messages to user
+
+#### JavaScript Requirements
+- Use modern fetch API for HTTP requests
+- Proper error handling for network failures
+- Form validation (HTML5 validation)
+- Dynamic DOM manipulation
+- Event handling for buttons and forms
+- Modal show/hide functionality
+
+#### Styling Requirements
+- Use Tailwind CSS classes
+- Professional color scheme (grays, blues, reds)
+- Hover effects on buttons
+- Responsive table (horizontal scroll on mobile)
+- Modal overlay with backdrop
+- Form styling with focus states
+
+### Implementation Steps
+
+1. **HTML Structure**
+   - Create semantic HTML with proper headings
+   - Include Tailwind CDN link
+   - Set up table structure for customer list
+   - Create modal containers (hidden by default)
+   - Add form elements with proper input types
+
+2. **CSS Styling**
+   - Use Tailwind utility classes
+   - Style table with borders and spacing
+   - Style modals with fixed positioning and backdrop
+   - Style buttons with colors and hover effects
+   - Ensure responsive design
+
+3. **JavaScript Functionality**
+   - Implement loadCustomers() function
+   - Implement CRUD operations (create, read, update, delete)
+   - Handle modal open/close
+   - Handle form submission
+   - Update DOM dynamically
+   - Handle errors gracefully
+
+4. **Error Handling**
+   - Network errors (API not running)
+   - HTTP errors (400, 500, etc.)
+   - Form validation errors
+   - Display user-friendly error messages
+
+### Testing
+- Test with MiniCRM API running on localhost:5000
+- Verify all CRUD operations work
+- Test error scenarios
+- Verify responsive design
+- Test on different browsers
+
+### File Structure
+```
+UI/
+├── index.html    # Main HTML page
+├── app.js        # JavaScript functionality
+└── prompt.txt    # This file
+```
+
+### Notes
+- The API supports CORS, so the UI can run from file:// or any web server
+- Use standard JavaScript (ES6+ features are fine)
+- Focus on clean, maintainable code
+- Include comments in JavaScript for clarity
+- Handle edge cases (empty lists, network failures, etc.)
