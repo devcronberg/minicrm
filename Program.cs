@@ -45,6 +45,30 @@ internal class Program
                     ValidAudience = jwtSettings["Audience"],
                     IssuerSigningKey = new SymmetricSecurityKey(secretKey)
                 };
+
+                // Add custom token validation to check if token is revoked
+                // This ensures that revoked tokens are immediately invalidated for all protected endpoints
+                options.Events = new JwtBearerEvents
+                {
+                    OnTokenValidated = context =>
+                    {
+                        var jwtService = context.HttpContext.RequestServices.GetRequiredService<JwtService>();
+                        
+                        // Extract the raw JWT token from the Authorization header
+                        var authHeader = context.Request.Headers.Authorization.ToString();
+                        if (authHeader.StartsWith("Bearer "))
+                        {
+                            var token = authHeader.Substring("Bearer ".Length).Trim();
+                            
+                            if (jwtService.IsTokenRevoked(token))
+                            {
+                                context.Fail("Token has been revoked");
+                            }
+                        }
+                        
+                        return Task.CompletedTask;
+                    }
+                };
             });
 
         builder.Services.AddAuthorization();

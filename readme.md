@@ -177,3 +177,21 @@ You can also generate clients for this API in other languages such as Python, Ja
 - **TypeScript**: Use tools like `swagger-typescript-api` or `openapi-generator` to generate a TypeScript client.
 
 Refer to the documentation of these tools for detailed instructions on how to generate clients in these languages.
+
+## Changelog
+
+### [Fix] Token Revocation for Protected Endpoints
+
+**Issue**: The `/auth/revoke` endpoint was not properly invalidating tokens for protected API endpoints. While tokens were being added to the revocation list, the ASP.NET Core JWT Bearer authentication middleware continued to accept them for accessing protected resources.
+
+**Root Cause**: The JWT Bearer middleware only performed standard JWT validation (signature, expiration, issuer, audience) and was unaware of the custom revocation logic in `JwtService.IsTokenRevoked()`.
+
+**Solution**: Added a custom `OnTokenValidated` event handler to the JWT Bearer configuration in `Program.cs` that integrates with the existing revocation system. When a request comes in with a JWT token:
+1. ASP.NET Core validates the token's signature, expiration, issuer, and audience
+2. If valid, the custom handler checks `JwtService.IsTokenRevoked()`
+3. If revoked, authentication fails with "Token has been revoked"
+4. Results in immediate 401 Unauthorized response
+
+**Impact**: Revoked tokens now properly return `401 Unauthorized` for all protected endpoints (`/auth/customers`, `/auth/customers/{id}`, etc.), ensuring proper security enforcement across the API.
+
+**Files Changed**: `Program.cs`
