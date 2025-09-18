@@ -27,6 +27,7 @@ Authorization: Bearer {{accessToken}}
 
 
 ###
+# @name loginRefresh
 POST {{baseUrl}}/auth/refresh
 Authorization: Bearer {{accessToken}} 
 Content-Type: application/json
@@ -35,6 +36,9 @@ Content-Type: application/json
   "Token": "{{accessToken}}"  
 }
 
+### 
+@accessToken={{loginRefresh.response.body.access_token}}
+###
 
 # Revoke (and try to refresh or validate)
 ###
