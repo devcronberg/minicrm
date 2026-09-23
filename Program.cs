@@ -53,19 +53,19 @@ internal class Program
                     OnTokenValidated = context =>
                     {
                         var jwtService = context.HttpContext.RequestServices.GetRequiredService<JwtService>();
-                        
+
                         // Extract the raw JWT token from the Authorization header
                         var authHeader = context.Request.Headers.Authorization.ToString();
                         if (authHeader.StartsWith("Bearer "))
                         {
                             var token = authHeader.Substring("Bearer ".Length).Trim();
-                            
+
                             if (jwtService.IsTokenRevoked(token))
                             {
                                 context.Fail("Token has been revoked");
                             }
                         }
-                        
+
                         return Task.CompletedTask;
                     }
                 };
