@@ -1,6 +1,6 @@
 # MiniCRM
 
-This project serves as a REST backend for a simple CRM application, demonstrating basic CRUD operations in a .NET 9.0 Web API project. It is also utilized in C#/TS/JS/HtmlX/Python training and assignments for courses instructed by [Michell Cronberg](https://mcronberg.github.io/bogenomcsharp/diverse/ommichell.html).
+This project serves as a REST backend for a simple CRM application, demonstrating basic CRUD operations in a .NET 10.0 Web API project. It is also utilized in C#/TS/JS/HtmlX/Python training and assignments for courses instructed by [Michell Cronberg](https://mcronberg.github.io/bogenomcsharp/diverse/ommichell.html).
 
 > WARNING: This repo is used in training and code should not be used in production.
 
@@ -78,9 +78,11 @@ public class Customer
 ## Getting Started
 
 1. Clone the repository to your local machine. You can also download the repository as a ZIP file and extract it to a local directory.
-2. Ensure you have .NET 9.0 SDK installed on your machine.
+2. Ensure you have the latest .NET 10.0 SDK installed on your machine.
 3. Run the project by running `dotnet run`.
 4. Open your web browser and navigate to `http://localhost:5000/swagger` (Swagger is integrated into this project to provide interactive API documentation).
+
+The optional UI uses Tailwind CSS 4.3.3 via its development-only browser CDN. It requires internet access and a modern browser (Safari 16.4+, Chrome 111+, or Firefox 128+).
 
 ## CORS (Cross-Origin Resource Sharing)
 

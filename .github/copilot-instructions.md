@@ -1,18 +1,23 @@
 # MiniCRM REST API Backend
 
-MiniCRM is a .NET 9.0 Web API project demonstrating basic CRUD operations for a simple CRM application. This project is used for C#/TS/JS/HtmlX/Python training and assignments.
+MiniCRM is a .NET 10.0 Web API project demonstrating basic CRUD operations for a simple CRM application. This project is used for C#/TS/JS/HtmlX/Python training and assignments.
 
 **Always reference these instructions first and fallback to search or bash commands only when you encounter unexpected information that does not match the info here.**
+
+## Local API Skill
+
+Before calling, testing, or integrating with MiniCRM, read [.github/skills/minicrm-api/SKILL.md](skills/minicrm-api/SKILL.md). It documents the actual API at `http://localhost:5000`, request/response formats, authentication, startup, and known limitations.
 
 ## Working Effectively
 
 ### Environment Setup and Dependencies
-- Install .NET 9.0 SDK to ~/.dotnet/ directory:
+- Install the latest .NET 10.0 SDK to ~/.dotnet/ directory:
   ```bash
-  curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --version 9.0.101 --install-dir ~/.dotnet
+   curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --channel 10.0 --install-dir ~/.dotnet
   export PATH="$HOME/.dotnet:$PATH"
   ```
-- Verify installation: `~/.dotnet/dotnet --version` should show 9.0.101
+- Verify installation: `~/.dotnet/dotnet --version` should show 10.0.x
+- On Windows, use `dotnet` from PATH instead of `~/.dotnet/dotnet`.
 
 ### Build and Run Commands
 - Restore packages: `~/.dotnet/dotnet restore` -- takes 2-3 seconds
@@ -125,7 +130,7 @@ Data/
 
 ### Important Files
 - customers.json: Seed data for database initialization
-- MiniCrm.csproj: Project dependencies and .NET 9.0 target framework
+- MiniCrm.csproj: Project dependencies and .NET 10.0 target framework
 - Program.cs: Application startup and middleware configuration
 
 ## Validation Scenarios
@@ -176,8 +181,8 @@ Data/
 ## Common Issues and Solutions
 
 ### .NET SDK Issues
-- Ensure .NET 9.0 SDK is installed: `~/.dotnet/dotnet --version`
-- If build fails with package compatibility: Verify target framework is net9.0
+- Ensure .NET 10.0 SDK is installed: `~/.dotnet/dotnet --version`
+- If build fails with package compatibility: Verify target framework is net10.0
 - Set PATH: `export PATH="$HOME/.dotnet:$PATH"`
 
 ### Database Issues

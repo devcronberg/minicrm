@@ -378,10 +378,11 @@ function closeQuickEditModal() {
 async function handleQuickEditSubmit(event) {
     event.preventDefault();
     const newName = document.getElementById('quickEditName').value.trim();
+    const customerId = currentQuickEditId;
 
-    if (newName && currentQuickEditId) {
+    if (newName && customerId) {
         try {
-            const response = await fetch(`${API_BASE}/customers/${currentQuickEditId}`, {
+            const response = await fetch(`${API_BASE}/customers/${customerId}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -393,7 +394,7 @@ async function handleQuickEditSubmit(event) {
 
             closeQuickEditModal();
             // Update just the name in the table without full reload
-            updateCustomerNameInTable(currentQuickEditId, newName);
+            updateCustomerNameInTable(customerId, newName);
         } catch (error) {
             console.error('Error updating customer name:', error);
             alert('Failed to update customer name. Please try again.');
